@@ -46,4 +46,11 @@ public class SampleRestApplication {
         endpoint.setFeatures(Arrays.asList(new Swagger2Feature()));
         return endpoint.create();
     }
+    
+    @Bean
+    public io.opentracing.Tracer tracer() {
+        return new Configuration("spring-boot", new Configuration.SamplerConfiguration(ProbabilisticSampler.TYPE, 1),
+        new Configuration.ReporterConfiguration())
+        .getTracer();
+    } 
 }
