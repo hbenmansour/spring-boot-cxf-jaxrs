@@ -50,10 +50,5 @@ public class SampleRestApplication {
 		return endpoint.create();
 	}
 
-	@Bean
-	public io.opentracing.Tracer jaegerTracer() {
-		return new Tracer.Builder("spring-boot").build();
-
-	}
 
 }
